@@ -1,12 +1,11 @@
 # Tutorial
 
-In this tutorial a data owner (data provider) will publish privatedata to the fitchain network and provide a description of the 
-data science problem that needs to be solved. 
-A data scientist (model provider) can apply to the project made available by data provider, inspect the data source(s) connected
-to the project and provide a solution in the form of a machine learning model (using sklearn or tensorflow).
+In this tutorial a data owner (also referred to as _data provider_) will publish private data to the fitchain network and provide a description of the data science problem that needs to be solved. 
+A data scientist (also referred to as _model provider_) can apply to the project made available by _data provider_, inspect the data source(s) that are connected to the project and provide a solution in the form of a machine learning model (using libraries such as sklearn or tensorflow).
+
 
 ## Data provider
-The following preliminary steps are required by data provider to submit a project
+The following preliminary steps are required by _data provider_ to submit a project
 
 1. Run the IPFS daemon
 `$ ipfs daemon`
@@ -25,24 +24,60 @@ $ cd fitchain-pod
 $ node index
 ```
 
-4. Run the fitchain pod dashboard (point the web browser to `localhost:9090`
+4. Run the fitchain dashboard (and pointing the web browser to `http://localhost:9090`)
 
 ```bash
-cd fitchain-pod-ui
-npm run dev
+$ cd fitchain-pod-ui
+$ npm run dev
 ```
 
 Use the dashboard to add data provider, add datasource with description, create project and submit
 
+
 ## Model provider
 
-A data scientist needs to execute steps 1, 2, 3 in order to connect to the fitchain network with an Ethereum account.
-
-He/she can use the fitchain command line interface to inspect the schema of the private data of data provider and 
-to provide a solution to the data science problem of choice. 
+A _model provider_ needs to execute steps 1, 2, and 3 in order to connect to the fitchain network with an Ethereum account.
+He/she can use the fitchain command line interface to inspect the schema of the private data published by _data provider_ and provide a solution to the data science problem of choice. 
 
 
 ### How to use the fitchain command line interface
+The command line interface is an executable that allows one to apply to projects, deploy machine learning models and inspect
+logs and metrics of submitted jobs. 
+
+To list all commands type 
+```bash
+fitchain help
+The fitchain commandline client can be used to communicate with a pod from the commandline. 
+This might be preferable while designing models.
+
+Usage:
+  fitchain [command]
+
+Available Commands:
+  accounts    List the accounts in the pod
+  help        Help about any command
+  identity    Get the pod identity details
+  jobs        Get a list of all the jobs for the given workspace
+  lock        Lock the given account
+  logs        Get the logs for the given job
+  metrics     Get the metrics for the given job
+  project     show information about the given project
+  projects    search for projects matching the given search string
+  register    Create a new account with the provided password
+  status      Get the status of the provided account
+  unlock      Unlock the given account
+  workspace   Workspace commands
+  workspaces  Get a list of all the workspaces on the pod
+
+Flags:
+  -h, --help            help for fitchain
+  -n, --name string     The name of the workspace
+  -u, --podUri string   The uri of the pod (default "http://localhost:9400/v1")
+  -w, --wsUri string    The websocket uri of the pod (default "ws://localhost:9400/v1")
+
+Use "fitchain [command] --help" for more information about a command.
+```
+
 
 To list all projects
 
